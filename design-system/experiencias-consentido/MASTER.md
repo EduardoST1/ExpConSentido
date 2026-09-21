@@ -1,5 +1,10 @@
 # Design System Master File
 
+> **ACTUALIZACIÓN 2026-09-21:** La clasificación anterior como agencia de viajes,
+> la paleta azul genérica, Noto Sans Thai y el estilo Aurora UI quedan obsoletos.
+> La fuente vigente para identidad, color y dirección editorial es
+> `pages/inicio.md` junto con los tokens de `src/app/globals.css`.
+
 > **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
 > If not, strictly follow the rules below.

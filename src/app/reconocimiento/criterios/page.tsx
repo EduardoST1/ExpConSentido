@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { PageHero } from "@/components/PageHero";
+import { criteria } from "@/data/content";
+
+export const metadata: Metadata = { title: "Criterios del reconocimiento", description: "Criterios públicos para evaluar experiencias dentro de Experiencias ConSentido." };
+export default function CriteriaPage() { return <main id="contenido"><PageHero eyebrow="METODOLOGÍA ABIERTA" title="Los criterios antes que el resultado." description="La metodología definitiva incluirá indicadores, ponderaciones, evidencia requerida, reglas de conflicto de interés y un mecanismo de revisión." back={{ label: "El reconocimiento", href: "/reconocimiento" }} /><section className="section surface"><div className="criteria-grid large">{criteria.map((criterion, index) => <article key={criterion}><span>{String(index + 1).padStart(2, "0")}</span><h2>{criterion}</h2><p>Se documentará mediante indicadores observables y evidencia apropiada para el tipo de experiencia.</p></article>)}</div><div className="notice wide"><strong>Metodología en desarrollo</strong><p>Publicaremos la versión, fecha de vigencia y cambios. Ningún criterio sustituye permisos, normativas o responsabilidades legales aplicables.</p></div></section></main>; }

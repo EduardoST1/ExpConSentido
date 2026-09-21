@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Sans, Lora } from "next/font/google";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -15,16 +18,17 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Experiencias conSentido | Turismo gastronómico en Puebla",
-    template: "%s | Experiencias conSentido",
+    default: "Experiencias ConSentido | Descubre Cholula con otra mirada",
+    template: "%s | Experiencias ConSentido",
   },
   description:
-    "Experiencias gastronómicas y culturales que despiertan los sentidos y conectan al viajero con Puebla, sus comunidades y sus sabores.",
+    "Explora experiencias, rutas e historias de Cholula con información clara, mirada local y un reconocimiento turístico independiente.",
   openGraph: {
     title: "Experiencias conSentido",
     description:
-      "Viaja con los cinco sentidos y conecta con los sabores, las personas y las historias del territorio.",
+      "Experiencias, rutas e historias para descubrir Cholula con información clara y mirada local.",
     locale: "es_MX",
     type: "website",
   },
@@ -33,7 +37,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
-      <body className={`${dmSans.variable} ${lora.variable}`}>{children}</body>
+      <body className={`${dmSans.variable} ${lora.variable}`}>
+        <a className="skip-link" href="#contenido">Saltar al contenido</a>
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
