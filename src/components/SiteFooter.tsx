@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-brand">
-        <Image src="/logo-experiencias-consentido.png" alt="Experiencias ConSentido" width={500} height={500} />
+        <Link className="footer-wordmark" href="/" aria-label="Experiencias ConSentido, inicio"><span>EXPERIENCIAS</span><strong>conSENTIDO</strong></Link>
         <p>Consentir al turista con un sentido de concientización.</p>
       </div>
       <div>
@@ -25,6 +24,7 @@ export function SiteFooter() {
         <a href="https://www.instagram.com/experiencia_consentido/" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://www.facebook.com/profile.php?id=61579055224698" target="_blank" rel="noreferrer">Facebook</a>
         <Link href="/postula">Postula tu experiencia</Link>
+        <Link href="/privacidad">Privacidad</Link>
       </div>
       <small>© 2026 Experiencias ConSentido · Iniciativa independiente y no gubernamental.</small>
     </footer>

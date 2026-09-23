@@ -15,9 +15,11 @@ Abre [http://localhost:3000](http://localhost:3000).
 
 ```env
 NEXT_PUBLIC_SITE_URL=https://tu-dominio.com
+APPLICATION_WEBHOOK_URL=https://tu-receptor-de-postulaciones
+REPORT_WEBHOOK_URL=https://tu-receptor-de-reportes
 ```
 
-Esta variable se utiliza para metadatos, sitemap y robots. En desarrollo usa `http://localhost:3000`.
+`NEXT_PUBLIC_SITE_URL` se utiliza para metadatos, sitemap y robots. Los webhooks conectan los formularios con n8n, Make, Zapier o un backend propio; sin ellos el sitio no acepta ni pierde datos silenciosamente.
 
 ## Comandos
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ExperienceCard } from "@/components/ExperienceCard";
-import { experiences, routes, stories } from "@/data/content";
+import { events, experiences, routes, stories } from "@/data/content";
 
 const senses = [
   ["01", "Gusto", "Saborea el origen"],
@@ -58,6 +58,11 @@ export default function Home() {
       <section className="recognition-feature">
         <div className="seal-mark" aria-hidden="true"><span>EC</span><small>RECONOCIMIENTO<br />INDEPENDIENTE</small></div>
         <div><p className="eyebrow">SELLO EXPERIENCIA CONSENTIDO</p><h2>Reconocer con criterios, no con popularidad.</h2><p>Una evaluación independiente de identidad, hospitalidad, claridad, accesibilidad, sostenibilidad e impacto. No es una certificación gubernamental y pagar nunca garantiza obtenerla.</p><div className="hero-actions"><Link className="button button-light" href="/reconocimiento">Cómo funciona</Link><Link className="text-link light" href="/postula">Postular una experiencia →</Link></div></div>
+      </section>
+
+      <section className="section agenda-preview">
+        <div className="section-heading split-heading"><div><p className="eyebrow">PRÓXIMAMENTE EN CHOLULA</p><h2>Fechas que vale la pena planear.</h2></div><div><p>La agenda solo publicará eventos, talleres y temporadas confirmados por sus responsables.</p><Link className="text-link" href="/cholula/agenda">Abrir agenda →</Link></div></div>
+        <div className="editorial-grid">{events.map((event) => <article className="event-card" key={event.slug}><span>{event.displayDate}</span><h3>{event.title}</h3><p>{event.summary}</p><small>{event.place}</small><Link href={`/cholula/agenda/${event.slug}`}>Ver información →</Link></article>)}</div>
       </section>
 
       <section className="section stories-preview">

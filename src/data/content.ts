@@ -9,17 +9,41 @@ export type Experience = {
   title: string;
   summary: string;
   description: string;
-  category: "Gastronomía" | "Cultura" | "Comunidad" | "Naturaleza";
+  category: "Gastronomía" | "Cultura" | "Comunidad" | "Naturaleza" | "Patrimonio" | "Arte" | "Bienestar";
   zone: string;
   senses: string[];
   duration: string;
+  durationMinutes: number;
   price: string;
   priceAmount: number;
+  priceBand: "Gratis" | "Hasta $500" | "$501 a $1,000" | "Más de $1,000";
   accessible: boolean;
   free: boolean;
   season: string;
   audience: string;
+  travelerTypes: string[];
+  responsible: string;
+  locationLabel: string;
+  mapQuery: string;
+  schedule: string;
+  includes: string[];
+  notIncludes: string[];
+  reservation: string;
+  children: string;
+  pets: string;
+  languages: string[];
+  paymentMethods: string[];
+  recommendations: string[];
+  contact: {
+    whatsapp?: string;
+    instagram?: string;
+    website?: string;
+  };
   recognition: RecognitionLevel;
+  evaluationDate?: string;
+  validUntil?: string;
+  verificationCode?: string;
+  verified: boolean;
   updatedAt: string;
   confirmedBy: string;
   highlights: string[];
@@ -59,7 +83,26 @@ export const destination = {
   name: "Cholula",
   state: "Puebla",
   edition: "Experiencias ConSentido Cholula",
-  updatedAt: "21 de septiembre de 2026",
+  updatedAt: "23 de septiembre de 2026",
+};
+
+const operationalDefaults = {
+  responsible: "Responsable por confirmar",
+  locationLabel: "Ubicación exacta disponible al confirmar la experiencia",
+  mapQuery: "Cholula Puebla",
+  schedule: "Horario por confirmar con la persona responsable",
+  includes: ["Acompañamiento descrito en la ficha", "Información previa para la visita"],
+  notIncludes: ["Traslados no indicados", "Consumos adicionales"],
+  reservation: "Por confirmar",
+  children: "Consultar antes de reservar",
+  pets: "Consultar antes de asistir",
+  languages: ["Español"],
+  paymentMethods: ["Por confirmar"],
+  recommendations: ["Usar calzado cómodo", "Confirmar condiciones antes de trasladarse", "Pedir permiso antes de fotografiar personas"],
+  contact: {
+    instagram: "https://www.instagram.com/experiencia_consentido/",
+  },
+  verified: false,
 };
 
 export const experiences: Experience[] = [
@@ -73,12 +116,16 @@ export const experiences: Experience[] = [
     zone: "San Pedro Cholula",
     senses: ["Gusto", "Olfato", "Vista"],
     duration: "2 h 30 min",
+    durationMinutes: 150,
     price: "Precio por confirmar",
     priceAmount: 450,
+    priceBand: "Hasta $500",
     accessible: true,
     free: false,
     season: "Todo el año",
     audience: "Viajeros curiosos y familias",
+    travelerTypes: ["Familias", "Primera visita", "Foodies"],
+    ...operationalDefaults,
     recognition: "en-revision",
     updatedAt: "21 sep 2026",
     confirmedBy: "Ficha editorial de demostración",
@@ -95,12 +142,16 @@ export const experiences: Experience[] = [
     zone: "San Andrés Cholula",
     senses: ["Tacto", "Vista", "Oído"],
     duration: "2 horas",
+    durationMinutes: 120,
     price: "Precio por confirmar",
     priceAmount: 380,
+    priceBand: "Hasta $500",
     accessible: false,
     free: false,
     season: "Con reservación",
     audience: "Adultos y jóvenes",
+    travelerTypes: ["Parejas", "Adultos", "Viajeros creativos"],
+    ...operationalDefaults,
     recognition: "en-revision",
     updatedAt: "21 sep 2026",
     confirmedBy: "Ficha editorial de demostración",
@@ -117,12 +168,16 @@ export const experiences: Experience[] = [
     zone: "Centro y barrios",
     senses: ["Vista", "Oído", "Olfato"],
     duration: "3 horas",
+    durationMinutes: 180,
     price: "Acceso libre",
     priceAmount: 0,
+    priceBand: "Gratis",
     accessible: true,
     free: true,
     season: "Todo el año",
     audience: "Primera visita a Cholula",
+    travelerTypes: ["Familias", "Primera visita", "Viajeros solos"],
+    ...operationalDefaults,
     recognition: "en-revision",
     updatedAt: "21 sep 2026",
     confirmedBy: "Ficha editorial de demostración",
@@ -139,12 +194,16 @@ export const experiences: Experience[] = [
     zone: "Entorno rural",
     senses: ["Gusto", "Tacto", "Olfato"],
     duration: "4 horas",
+    durationMinutes: 240,
     price: "Precio por confirmar",
     priceAmount: 620,
+    priceBand: "$501 a $1,000",
     accessible: false,
     free: false,
     season: "Según ciclo agrícola",
     audience: "Grupos pequeños",
+    travelerTypes: ["Parejas", "Adultos", "Grupos pequeños"],
+    ...operationalDefaults,
     recognition: "en-revision",
     updatedAt: "21 sep 2026",
     confirmedBy: "Ficha editorial de demostración",
@@ -169,6 +228,54 @@ export const routes: Route[] = [
     duration: "Medio día",
     stops: ["Barro, manos y memoria", "Comercio local", "Café de cierre"],
     senses: ["Tacto", "Vista"],
+  },
+  {
+    slug: "cholula-mas-alla-de-la-piramide",
+    title: "Cholula más allá de la pirámide",
+    summary: "Una propuesta para comprender barrios, oficios y espacios cotidianos sin invadir lugares sensibles.",
+    duration: "1 día",
+    stops: ["Lectura territorial", "Comercio local", "Historia del destino"],
+    senses: ["Vista", "Oído"],
+  },
+  {
+    slug: "sabores-con-identidad",
+    title: "Sabores con identidad",
+    summary: "Ruta gastronómica de muestra centrada en origen, temporada y autoría culinaria.",
+    duration: "Medio día",
+    stops: ["Mercado", "Cocina local", "Producto de temporada"],
+    senses: ["Gusto", "Olfato"],
+  },
+  {
+    slug: "cholula-en-familia",
+    title: "Cholula en familia",
+    summary: "Actividades de ritmo flexible con condiciones para niñas, niños y personas acompañantes.",
+    duration: "1 día",
+    stops: ["Actividad cultural", "Pausa accesible", "Recorrido corto"],
+    senses: ["Vista", "Tacto", "Gusto"],
+  },
+  {
+    slug: "un-dia-de-lluvia",
+    title: "Qué hacer cuando llueve",
+    summary: "Alternativas bajo techo sujetas a confirmación de horarios y disponibilidad.",
+    duration: "Medio día",
+    stops: ["Taller", "Historia local", "Mesa compartida"],
+    senses: ["Tacto", "Oído", "Gusto"],
+  },
+  {
+    slug: "fin-de-semana-con-sentido",
+    title: "Fin de semana con sentido",
+    summary: "Dos días con espacio para descubrir, descansar y consumir de forma local.",
+    duration: "2 días",
+    stops: ["Sabores y mercado", "Oficios locales", "Paisaje y barrios"],
+    senses: ["Gusto", "Vista", "Oído", "Tacto", "Olfato"],
+  },
+  {
+    slug: "cholula-con-presupuesto-cuidado",
+    title: "Cholula con presupuesto cuidado",
+    summary: "Experiencias gratuitas o de costo moderado con gastos claramente identificados.",
+    duration: "1 día",
+    stops: ["Recorrido libre", "Consumo local opcional", "Actividad editorial"],
+    senses: ["Vista", "Oído"],
   },
 ];
 

@@ -31,7 +31,9 @@ export const metadata: Metadata = {
       "Experiencias, rutas e historias para descubrir Cholula con información clara y mirada local.",
     locale: "es_MX",
     type: "website",
+    images: [{ url: "/logo-experiencias-consentido.png", width: 500, height: 500, alt: "Experiencias ConSentido" }],
   },
+  twitter: { card: "summary_large_image", title: "Experiencias ConSentido", description: "Descubre las experiencias que le dan sentido a Cholula.", images: ["/logo-experiencias-consentido.png"] },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

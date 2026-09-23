@@ -6,6 +6,9 @@ const colorClass: Record<Experience["category"], string> = {
   Cultura: "magenta",
   Comunidad: "cyan",
   Naturaleza: "green",
+  Patrimonio: "magenta",
+  Arte: "cyan",
+  Bienestar: "green",
 };
 
 export function ExperienceCard({ experience }: { experience: Experience }) {

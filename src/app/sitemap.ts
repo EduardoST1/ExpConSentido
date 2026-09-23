@@ -4,7 +4,7 @@ import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl;
-  const staticRoutes = ["", "/cholula", "/cholula/explora", "/cholula/rutas", "/cholula/historias", "/cholula/agenda", "/cholula/planea", "/cholula/transparente", "/reconocimiento", "/reconocimiento/criterios", "/postula"];
+  const staticRoutes = ["", "/cholula", "/cholula/explora", "/cholula/rutas", "/cholula/historias", "/cholula/agenda", "/cholula/planea", "/cholula/transparente", "/reconocimiento", "/reconocimiento/criterios", "/postula", "/privacidad"];
   return [
     ...staticRoutes.map((route) => ({ url: `${base}${route}`, lastModified: new Date("2026-09-21"), changeFrequency: "weekly" as const })),
     ...experiences.map(({ slug }) => ({ url: `${base}/cholula/experiencias/${slug}`, lastModified: new Date("2026-09-21"), changeFrequency: "weekly" as const })),
